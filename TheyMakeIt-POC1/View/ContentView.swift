@@ -19,20 +19,7 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: geometry.size.width)
                 
-                VStack {
-                    Text(woman.fullName)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    HStack {
-                        Text(woman.birthYear)
-                        Text("-")
-                        Text(woman.deathYear)
-                    }
-                    .font(.headline)
-                    .foregroundStyle(.darkGrey)
-                }
-                .padding(10)
-                .background(RoundedRectangle(cornerRadius: 8).stroke(.purple, lineWidth: 2))
+                TitleView(fullName: woman.fullName, birthYear: woman.birthYear, deathYear: woman.deathYear)
                 
                 VStack {
                     HStack {
@@ -52,13 +39,9 @@ struct ContentView: View {
                 
                 VStack {
                     ForEach(woman.awards, id: \.self) { award in
-                        Text(award)
-                            .padding(8)
-                            .background(RoundedRectangle(cornerRadius: 8).fill(.purple))
+                        BubbleView(title: award)
                     }
                 }
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
                 .padding()
                 
                 Text(woman.description)
